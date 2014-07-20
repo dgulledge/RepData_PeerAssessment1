@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 # Reproducible Research: Peer Assessment 1
 
 
@@ -25,6 +28,13 @@ steps.per.interval <- tapply(recorded.activity$steps, recorded.activity$interval
 steps.per.interval.filtered <- steps.per.interval[!is.na(steps.per.interval)]
 ```
 ### Calculate interval times in minutes since midnight
+
+Graphing the activity by interval causes the intervals between 55 minutes past one hour
+and the start of the next hour to appear to be 45 minutes long instead of only 5 minutes.
+The simplest way to change this is to convert the times to minutes past midnight.  This
+means that 10:00 am, which was previously labeled 1000, will be labeled as 600 minutes
+past midnight (60 minutes/hour * 10 hours).  This labeling sacrifices some clarity for
+greater accuracy.
 
 ```r
 intervals <- unique(activity$interval)
