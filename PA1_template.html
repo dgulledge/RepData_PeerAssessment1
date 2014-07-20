@@ -77,6 +77,7 @@ steps.per.interval.filtered &lt;- steps.per.interval[!is.na(steps.per.interval)]
 </div>
 <div id="calculate-interval-times-in-minutes-since-midnight" class="section level3">
 <h3>Calculate interval times in minutes since midnight</h3>
+<p>Graphing the activity by interval causes the intervals between 55 minutes past one hour and the start of the next hour to appear to be 45 minutes long instead of only 5 minutes. The simplest way to change this is to convert the times to minutes past midnight. This means that 10:00 am, which was previously labeled 1000, will be labeled as 600 minutes past midnight (60 minutes/hour * 10 hours). This labeling sacrifices some clarity for greater accuracy.</p>
 <pre class="r"><code>intervals &lt;- unique(activity$interval)
 interval.times &lt;- (intervals%/%100)*60 + intervals%%100</code></pre>
 </div>
